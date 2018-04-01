@@ -10,9 +10,9 @@ def index():
 
 
 
-#@app.route("/welcome", methods=['POST'])
+@app.route("/wecome", methods=['POST'])
 def welcome():
-    return
+
 
 
 app.run ()
