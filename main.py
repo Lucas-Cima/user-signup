@@ -10,8 +10,16 @@ def index():
 
 
 
-@app.route("/wecome", methods=['POST'])
+@app.route("/", methods=['POST'])
 def welcome():
+
+    username = request.form['username']
+
+    if len(username) > 20:
+        return 'error'
+
+    else:
+        return '<h1>Welcome ' + username + '</h1>'
 
 
 
