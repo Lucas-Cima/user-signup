@@ -30,7 +30,7 @@ def validate_signup():
 
 
     else:
-        return redirect('/welcome')
+        return redirect("/welcome?username={0}".format(username))
 
 
 
