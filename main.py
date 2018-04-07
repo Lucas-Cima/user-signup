@@ -24,23 +24,22 @@ def validate_signup():
     email = request.form['email']
     email_error = ''
     
-    if len(username) > 20 or len(username) < 3:
-        username_error = 'Not a Valid Username'
-
-    if '' in username:
+    if len(username) > 20 or len(username) < 3 or ' ' in username:
         username_error = 'Not a Valid Username'
     
-    if len(password) > 20 or len(password) < 3:
-        password_error = 'Not a Valid Password'
-    
-    if '' in password:
+    if len(password) > 20 or len(password) < 3 or ' ' in password:
         password_error = 'Not a Valid Password'
     
     if verify != password:
         verify_error = 'Passwords do Not Match'
 
-    if not username_error or password_error or verify_error:
+    if len(email) > 1:
+        if "@" and "." not in email or len(email) > 20 or len(email) < 3 or ' ' in email:
+            email_error = 'Not a Valid E-mail'
+
+    if not username_error and not password_error and not verify_error and not email_error:
         return redirect("/welcome?username={0}".format(username))
+    
     
     else:
         return render_template('index.html', username_error=username_error, password_error=password_error, 
