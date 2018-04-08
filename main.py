@@ -43,7 +43,7 @@ def validate_signup():
     
     else:
         return render_template('index.html', username_error=username_error, password_error=password_error, 
-        verify_error=verify_error, email_error=email_error)
+        verify_error=verify_error, email_error=email_error, form=request.form)
 
 
 
